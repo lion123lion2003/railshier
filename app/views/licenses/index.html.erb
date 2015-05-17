@@ -1,0 +1,41 @@
+<div class="contextual">
+    <%= link_to t(:label_license_new), new_license_path %>
+</div>
+
+<%= title t(:label_license_plural) %>
+
+<% if @licenses.any? %>
+<table class="list">
+  <thead><tr>
+  <th><%=t(:label_name)%></th>
+  <th><%=t(:label_customer_organization)%></th>
+  <th><%=t(:label_project_name)%></th>
+  <th><%=t(:label_requestor)%></th>
+  <th><%=t(:label_hostid)%></th>
+  <th><%=t(:label_effective_date)%></th>
+  <th><%=t(:label_expire_date)%></th>
+  <th><%=t(:label_product_plural)%></th>
+  <th><%=t(:label_usage)%></th>
+  <th></th>
+  </tr></thead>
+  <tbody>
+<% @licenses.each do |license| %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td class="name"><%= link_to license.name, license_path(license) %></td>
+    <td><%= license.customer_organization %></td>
+    <td><%= license.project_name %></td>
+    <td><%= license.requestor %></td>
+    <td><%= license.hostid %></td>
+    <td><%= license.effective_date %></td>
+    <td><%= license.expire_date %></td>
+    <td><%= license.products.size %></td>
+    <td><%= license.usage %></td>
+    <td class="buttons"><%= delete_link license %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="nodata"><%= t(:label_no_data) %></p>
+<% end %>
+

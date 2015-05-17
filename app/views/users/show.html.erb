@@ -1,0 +1,19 @@
+<div class="contextual"> <%= link_to t(:label_edit), edit_user_path(@user) %>
+</div>
+
+<%= title [t(:label_user_plural), users_path], @user.login %>
+
+<div class=box>
+<table class="attributes">
+  <tr><th><%= t(:field_login) %></th><td><%= @user.login %></td></tr>
+  <tr><th><%= t(:field_name) %></th><td><%= h @user %></td></tr>
+  <tr><th><%= t(:field_email) %></th><td><%= @user.email %></td></tr>
+  <tr><th><%= t(:field_admin) %></th><td><%= @user.admin %></td></tr>
+  <tr><th><%= t(:label_primary_group) %></th><td><%= h @user.primary_group || '-' %></td></tr>
+  <tr><th><%= t(:label_group_plural) %></th><td><ul>
+  <% @user.groups.each do |group| %>
+    <li><%=h group %></li>
+  <% end %>
+</ul></td></tr>
+</table>
+</div>

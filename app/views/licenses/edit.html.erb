@@ -1,0 +1,9 @@
+<%= title [t(:label_license_plural), licenses_path], @license.name%>
+
+<%= labelled_form_for @license do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<p>
+  <%= f.submit t(:button_submit) %>
+</p>
+<% end %>
+

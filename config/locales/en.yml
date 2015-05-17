@@ -1,0 +1,73 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  notice_successful_create: "Created successfully."
+  notice_successful_update: "Updated successfully."
+  label_edit: Edit
+  label_group_new: "Create new group"
+  label_product_family_new: Create new product family
+  label_product_new: Create new product
+  label_license_new: Create new license
+  label_user_new: Create new user
+  label_group_plural: "Groups"
+  label_group_leader: "Group leader"
+  label_product_family_plural: Product families
+  label_product_plural: Products
+  label_license_plural: Licenses
+  label_group: "Group"
+  label_user_plural: "Users"
+  label_new_user_plural: "New users"
+  label_no_data: "No data"
+  label_name: Name
+  label_description: Description
+  label_number: Number
+  label_family: Family
+  label_end_support_date: End support date
+  label_license: License
+  label_customer_organization: Customer Organization
+  label_project_name: Project Name
+  label_product_name: Product Name
+  label_quantity: Quantity
+  label_requestor: Requestor
+  label_hostid: Host ID
+  label_effective_date: Effective Date
+  label_expire_date: Expire Date
+  label_usage: Usage
+  label_login: Login
+  label_email: Email
+  label_status: Status
+  label_administrator: Administrator
+  label_primary_group: Primary group
+  label_new_group_plural: New groups
+  label_temp_license: Temp license
+  notice_not_authorized: You are not authorized to access this page.
+  notice_file_not_found: The page you were trying to access doesn't exist or has been removed.
+  text_are_you_sure: Are you sure?
+  button_back: Back
+  button_delete: Delete
+  button_create: Create
+  button_submit: Submit
+  button_create_and_continue: Create and continue
+  field_name: Name
+  field_primary: Primary
+  field_description: Description 
+  field_family: Family
+  field_number: Number
+  field_hostid: Host ID
+  field_effective_date: Effective date
+  field_expire_date: Expire date
+  field_usage: Usage
+  field_keyword: Keyword
+  field_customer_organization: Customer organization
+  field_project_name: Project name
+  field_login: Login
+  field_firstname: First Name
+  field_lastname: Last Name
+  field_ldap_user: LDAP User
+  field_email: Email
+  field_password: Password
+  field_password_confirmation: Password Confirmation
+  field_admin: Administrator
+

@@ -1,0 +1,11 @@
+<%= title [t(:label_group_plural), groups_path], t(:label_group_new) %>
+
+<%= labelled_form_for @group do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<p>
+  <%= f.submit t(:button_create) %>
+  <%= f.submit t(:button_create_and_continue), :name => 'continue' %>
+</p>
+<% end %>
+<div class="box tabular">
+</div>

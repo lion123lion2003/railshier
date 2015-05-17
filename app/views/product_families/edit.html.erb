@@ -1,0 +1,8 @@
+<%= title [t(:label_product_family_plural), product_families_path], @product_family.name %>
+
+<%= labelled_form_for @product_family do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<p>
+  <%= f.submit t(:button_submit) %>
+</p>
+<% end %>

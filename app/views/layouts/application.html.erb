@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruby on rails demo</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrapper">
+
+<div id="top-menu">
+    <div>
+      <ul>
+        <li><%= link_to "Home", home_path %></li>
+        <li><%= link_to t(:label_temp_license), licenses_path %></li>
+      </ul>
+    </div>
+    <div id="user_nav">
+        <ul>
+        <% if user_signed_in? %>
+            <li>Welcome <%= link_to current_user.to_s, edit_user_registration_path %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
+        </ul>
+    </div>
+</div>
+
+<div id="header">
+    <h1>Ruby on rails demo</h1>
+</div>
+
+<div id="main">
+    <div id="sidebar">
+        <%= yield :sidebar %>
+    </div>
+    <div id="content">
+        <%= render_flash_messages %>
+        <%= yield %>
+    </div>
+</div>
+
+<div id="footer">
+  <div class="bgl"><div class="bgr">
+    Powered by <%= mail_to 'lion123lion2003@126.com', 'Bob Zeng' %> &copy; 2015 Bob Zeng.
+  </div></div>
+</div>
+
+
+</div>
+
+</body>
+</html>

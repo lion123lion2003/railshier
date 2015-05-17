@@ -1,0 +1,33 @@
+<%= error_messages_for @user %>
+
+<div class="box tabular">
+  <p><%= f.text_field :login, :required => true, :size => 16 %></p>
+  <p><%= f.text_field :firstname, :required => true, :size => 16 %></p>
+  <p><%= f.text_field :lastname, :required => true, :size => 16 %></p>
+  <p><%= f.email_field :email, :required => true, :size => 16 %></p>
+  <p><%= f.check_box :admin %></p>
+  <p><label><%= t(:field_ldap_user) %></label><%= check_box_tag 'user[source]', User::SOURCE_LDAP, @user.source_ldap?, :onchange => "if (this.checked) {$('#password_fields').hide();} else {$('#password_fields').show();}"%></p>
+  <div id="password_fields">
+    <p><%= f.password_field :password, :size => 16 %></p>
+    <p><%= f.password_field :password_confirmation, :size => 16 %></p>
+  </div>
+
+  <p><%=label_tag 'user[primary_group_id]', t(:label_primary_group) %><%= select_tag 'user[primary_group_id]', options_for_select(@groups.map{|g| [h(g), g.id]}, @user.primary_group.nil? ? 0 : @user.primary_group.id), {:include_blank => true} %></p>
+  <% if @user.groups.any? %>
+  <fieldset class="box tabular">
+    <legend><%= t(:label_group_plural) %></legend>
+    <% @user.groups.each do |group| %>
+      <p><label><%= check_box_tag 'user[group_ids][]', group.id, true %> <%=h group %></label></p>
+    <% end %>
+  </fieldset>
+  <% end %>
+  <% if @new_groups.any? %>
+  <fieldset class="box tabular">
+    <legend><%= t(:label_new_group_plural) %></legend>
+    <% @new_groups.each do |group| %>
+      <p><label><%= check_box_tag 'user[group_ids][]', group.id, false %> <%=h group %></label></p>
+    <% end %>
+  </fieldset>
+<% end %>
+
+</div>

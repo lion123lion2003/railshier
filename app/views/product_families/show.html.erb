@@ -1,0 +1,11 @@
+<div class="contextual"> <%= link_to t(:label_edit), edit_product_family_path(@product_family) %>
+</div>
+
+<%= title [t(:label_product_family_plural), product_families_path], @product_family.name %>
+
+<div class=box>
+<table class="attributes">
+  <tr><th><%= t(:label_name) %></th><td><%= h @product_family || '-' %></td></tr>
+  <tr><th><%= t(:label_description) %></th><td><%= @product_family.description || '-' %> </td></tr>
+</table>
+</div>

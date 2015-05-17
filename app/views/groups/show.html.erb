@@ -1,0 +1,15 @@
+<div class="contextual"> <%= link_to t(:label_edit), edit_group_path(@group) %>
+</div>
+
+<%= title [t(:label_group_plural), groups_path], @group.name %>
+
+<div class=box>
+<table class="attributes">
+  <tr><th><%= t(:label_group_leader) %></th><td><%= h @group.primary_user || '-' %></td></tr>
+  <tr><th><%= t(:label_user_plural) %></th><td><ul>
+  <% @group.users.each do |user| %>
+    <li><%=h user %></li>
+  <% end %>
+</ul></td></tr>
+</table>
+</div>

@@ -1,0 +1,38 @@
+<div class="contextual">
+  <%= link_to t(:label_product_new), new_product_path %>
+</div>
+
+<%= title t(:label_product_plural) %>
+
+<% if @products.any? %>
+<table class="list">
+  <thead><tr>
+  <th><%=t(:label_number)%></th>
+  <th><%=t(:label_family)%></th>
+  <th><%=t(:label_name)%></th>
+  <th><%=t(:label_end_support_date)%></th>
+  <th></th>
+  </tr></thead>
+  <tbody>
+<% @products.each do |product| %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td class="name"><%= link_to h(product), edit_product_path(product) %></td>
+    <td><%= link_to h(product.family), :controller => :product_families, :action => :show, :id => product.family.id %></td>
+    <td><%= product.name %></td>
+    <td><%= product.end_support_date %></td>
+    <td class="buttons"><%= delete_link product %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="nodata"><%= t(:label_no_data) %></p>
+<% end %>
+
+<% content_for :sidebar do %>
+    <div>
+      <ul>
+        <li><%= link_to t(:label_product_family_new), new_product_family_path %></li>
+      </ul>
+    </div>
+<% end %>

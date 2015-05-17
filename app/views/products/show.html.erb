@@ -1,0 +1,12 @@
+<div class="contextual"> <%= link_to t(:label_edit), edit_product_path(@product) %>
+</div>
+
+<%= title [t(:label_product_plural), products_path], @product.number %>
+
+<div class=box>
+<table class="attributes">
+  <tr><th><%= t(:label_number) %></th><td><%= h @product %></td></tr>
+  <tr><th><%= t(:label_family) %></th><td><%= link_to h(@product.family), :controller => :product_families, :action => :show, :id => @product.family.id %></td></tr>
+  <tr><th><%= t(:label_user_plural) %></th><td><%= @product.name %></td></tr>
+</table>
+</div>

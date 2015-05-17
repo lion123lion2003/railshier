@@ -1,0 +1,17 @@
+<%= title [t(:label_product_plural), products_path], t(:label_product_new) %>
+
+<%= labelled_form_for @product do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<p>
+  <%= f.submit t(:button_create) %>
+  <%= f.submit t(:button_create_and_continue), :name => 'continue' %>
+</p>
+<% end %>
+
+<% content_for :sidebar do %>
+    <div>
+      <ul>
+        <li><%= link_to t(:label_product_family_new), new_product_family_path %></li>
+      </ul>
+    </div>
+<% end %>

@@ -1,0 +1,32 @@
+<%= title "Tools" %>
+    <div>
+      <ul>
+        <li><%= link_to t(:label_temp_license), licenses_path %></li>
+      </ul>
+    </div>
+<%= title "Main URLs" %>
+    <div>
+      <ul>
+    <li><a href="https://www.baidu.com/">Baidu</a></li>
+    <li><a href="http://bing.com/">Bing</a></li>
+      </ul>
+    </div>
+<%= title "Other URLs" %>
+    <div>
+      <ul>
+    <li><a href="http://www.sogou.com/">Sogou</a></li>
+      </ul>
+    </div>
+
+
+<% content_for :sidebar do %>
+  <% if user_signed_in? and current_user.admin? %>
+    <div>
+      <ul>
+        <li><%= link_to t(:label_user_plural), users_path %></li>
+        <li><%= link_to t(:label_group_plural), groups_path %></li>
+        <li><%= link_to t(:label_product_plural), products_path %></li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

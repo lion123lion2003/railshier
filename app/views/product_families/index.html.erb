@@ -1,0 +1,29 @@
+<div class="contextual">
+    <%= link_to t(:label_product_family_new), new_product_family_path %>
+</div>
+
+<%= title t(:label_product_family_plural) %>
+
+<% if @product_families.any? %>
+<table class="list">
+  <thead><tr>
+  <th><%=t(:label_name)%></th>
+  <th><%=t(:label_description)%></th>
+  <th><%=t(:label_product_plural)%></th>
+  <th></th>
+  </tr></thead>
+  <tbody>
+<% @product_families.each do |pf| %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td class="name"><%= link_to h(pf), edit_product_family_path(pf) %></td>
+    <td><%=h pf.description %></td>
+    <td><%= link_to pf.products.size, products_path %></td>
+    <td class="buttons"><%= delete_link product_family_path(pf) %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="nodata"><%= t(:label_no_data) %></p>
+<% end %>
+

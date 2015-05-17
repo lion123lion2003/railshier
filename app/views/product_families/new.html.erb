@@ -1,0 +1,9 @@
+<%= title [t(:label_product_family_plural), product_families_path], t(:label_product_family_new) %>
+
+<%= labelled_form_for @product_family do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<p>
+  <%= f.submit t(:button_create) %>
+  <%= f.submit t(:button_create_and_continue), :name => 'continue' %>
+</p>
+<% end %>

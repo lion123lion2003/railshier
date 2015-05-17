@@ -1,0 +1,7 @@
+<%= error_messages_for @product %>
+
+<div class="box tabular">
+  <p><%= f.text_field :number, :required => true, :size => 16 %></p>
+  <p><%=label_tag 'product[family_id]', t(:label_family) %><%= select_tag 'product[family_id]', options_for_select(@product_families.map{|pf| [h(pf), pf.id]}, @product.family_id) %></p>
+  <p><%= f.text_field :name, :required => true, :size => 60 %></p>
+</div>

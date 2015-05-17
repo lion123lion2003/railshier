@@ -1,0 +1,29 @@
+<div class="contextual">
+    <%= link_to t(:label_group_new), new_group_path %>
+</div>
+
+<%= title t(:label_group_plural) %>
+
+<% if @groups.any? %>
+<table class="list">
+  <thead><tr>
+  <th><%=t(:label_group)%></th>
+  <th><%=t(:label_group_leader)%></th>
+  <th><%=t(:label_user_plural)%></th>
+  <th></th>
+  </tr></thead>
+  <tbody>
+<% @groups.each do |group| %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td class="name"><%= link_to h(group), edit_group_path(group) %></td>
+    <td><%=h group.primary_user %></td>
+    <td><%= group.users.size %></td>
+    <td class="buttons"><%= delete_link group %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="nodata"><%= t(:label_no_data) %></p>
+<% end %>
+

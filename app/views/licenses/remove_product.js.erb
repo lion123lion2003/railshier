@@ -1,0 +1,2 @@
+$('#<%= "license_product_licenses_#{@product_id}" %>').remove()
+$('select[id="license_product_id"]').html('<%= escape_javascript(render :partial => "form_product") %>');

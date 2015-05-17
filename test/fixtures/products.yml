@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: MyString
+  name: MyString
+  status: 1
+  end_support_date: 2015-01-25 23:36:16
+
+two:
+  number: MyString
+  name: MyString
+  status: 1
+  end_support_date: 2015-01-25 23:36:16

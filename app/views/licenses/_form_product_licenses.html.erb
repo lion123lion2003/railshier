@@ -1,0 +1,8 @@
+<% product_licenses.each do |pl| %>
+  <tr id="<%= "license_product_licenses_#{pl.product_id}" %>">
+    <td><%= h pl.product %><%= hidden_field_tag "product_licenses[#{pl.product_id}][product_id]", pl.product_id %></td>
+    <td><%= text_field_tag "product_licenses[#{pl.product_id}][quantity]", pl.quantity, :size => 8 %></td>
+    <td><%= text_field_tag "product_licenses[#{pl.product_id}][expire_date]", pl.expire_date, :required => true, :size => 16 %><%= calendar_for("product_licenses_#{pl.product_id}_expire_date") %></td>
+    <td class="buttons"><%= delete_link license_product_path(pl.license_id.to_i, pl.product_id), {:data => {:remote => true, :confirm => t(:text_are_you_sure)}} %></td>
+  </tr>
+<% end %>

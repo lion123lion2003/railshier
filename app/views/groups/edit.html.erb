@@ -1,0 +1,27 @@
+<%= title [t(:label_group_plural), groups_path], @group.name %>
+
+<%= labelled_form_for @group do |f| %>
+<div class="box tabular">
+  <p><%= f.text_field :name, :required => true, :size => 60 %></p>
+  <p><%=label_tag 'group[primary_user_id]', t(:label_group_leader) %><%= select_tag 'group[primary_user_id]', options_for_select(@users.map{|u| [h(u), u.id]}, @group.primary_user.nil? ? 0 : @group.primary_user.id), {:include_blank => true} %></p>
+  <% if @group.users.any? %>
+  <fieldset class="box tabular">
+    <legend><%= t(:label_user_plural) %></legend>
+    <% @group.users.each do |user| %>
+      <p><label><%= check_box_tag 'group[user_ids][]', user.id, true %> <%=h user %></label></p>
+    <% end %>
+  </fieldset>
+  <% end %>
+  <% if @new_users.any? %>
+  <fieldset class="box tabular">
+    <legend><%= t(:label_new_user_plural) %></legend>
+    <% @new_users.each do |user| %>
+      <p><label><%= check_box_tag 'group[user_ids][]', user.id, false %> <%=h user %></label></p>
+    <% end %>
+  </fieldset>
+<% end %>
+</div>
+<p>
+  <%= f.submit t(:button_submit) %>
+</p>
+<% end %>

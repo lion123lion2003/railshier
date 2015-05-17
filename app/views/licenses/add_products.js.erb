@@ -1,0 +1,3 @@
+$('#<%= "license_#{@license.id}_product_licenses" %>').append(
+    '<%= escape_javascript(render :partial => 'form_product_licenses', :locals => {:product_licenses => @product_ids.map{|id| @license.product_licenses.build(:product_id => id)} }) %>');
+$('select[id="license_product_id"]').html('<%= escape_javascript(render :partial => "form_product") %>');

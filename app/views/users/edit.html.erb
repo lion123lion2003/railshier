@@ -1,0 +1,8 @@
+<%= title [t(:label_user_plural), users_path], @user.login %>
+
+<%= labelled_form_for @user do |f| %>
+<%= render :partial => 'form', :locals => { :f => f} %>
+<p>
+  <%= f.submit t(:button_submit) %>
+</p>
+<% end %>

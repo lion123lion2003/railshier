@@ -1,0 +1,1 @@
+<%= select_tag 'license[product_id]', options_for_select(@products.map{|p| [h(p), p.id]}), {:include_blank => true, :data => {:confirm => t(:text_are_you_sure), :remote => true, :method => 'post', :url => license_products_path(@license.id.to_i)}}%>

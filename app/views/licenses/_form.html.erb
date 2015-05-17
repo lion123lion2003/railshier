@@ -1,0 +1,26 @@
+<%= error_messages_for @license %>
+
+<div class="box tabular">
+  <p><%= f.text_field :name, :required => true, :size => 16 %></p>
+  <p><%= f.text_field :keyword, :size => 16 %></p>
+  <p><%= f.text_field :customer_organization, :required => true, :size => 16 %></p>
+  <p><%= f.text_field :project_name, :size => 16 %></p>
+  <p><%=label_tag 'license[requestor_id]', t(:label_requestor) %><%= select_tag 'license[requestor_id]', options_for_select(@users.map{|u| [h(u), u.id]}, @license.requestor_id) %></p>
+  <p><%= f.text_field :hostid, :required => true, :size => 16 %></p>
+  <p><%= f.text_field :effective_date, :required => true, :size => 16 %><%= calendar_for("license_effective_date") %></p>
+  <p><%= f.text_field :usage, :size => 60 %></p>
+  <p><%=label_tag 'license[product_ids]', t(:label_product_plural) %><%= render :partial => "form_product" %></p>
+  <p>
+    <table class="list">
+      <thead><tr>
+        <th><%= t(:label_product_name) %></th>
+        <th><%= t(:label_quantity) %></th>
+        <th><%= t(:label_expire_date) %></th>
+        <th></th>
+      </tr></thead>
+      <tbody id="<%= "license_#{@license.id}_product_licenses" %>">
+        <%= render :partial => "form_product_licenses", :locals => {:product_licenses => @license.product_licenses } %>
+      </tbody>
+    </table>
+  </p>
+</div>

@@ -1,0 +1,37 @@
+<div class="contextual">
+    <%= link_to t(:label_user_new), new_user_path %>
+</div>
+
+<%= title t(:label_user_plural) %>
+
+<% if @users.any? %>
+<table class="list">
+  <thead><tr>
+  <th><%=t(:label_login)%></th>
+  <th><%=t(:label_name)%></th>
+  <th><%=t(:label_email)%></th>
+  <th><%=t(:label_status)%></th>
+  <th><%=t(:label_administrator)%></th>
+  <th><%=t(:label_primary_group)%></th>
+  <th><%=t(:label_group_plural)%></th>
+  <th></th>
+  </tr></thead>
+  <tbody>
+<% @users.each do |user| %>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td class="name"><%= link_to user.login, edit_user_path(user) %></td>
+    <td class="name"><%= h(user) %></td>
+    <td class="name"><%= mail_to user.email %></td>
+    <td class="name"><%= user.status %></td>
+    <td class="name"><%= user.admin %></td>
+    <td class="name"><%= h(user.primary_group) %></td>
+    <td><%= user.groups.size %></td>
+    <td class="buttons"><%= delete_link user %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="nodata"><%= t(:label_no_data) %></p>
+<% end %>
+
