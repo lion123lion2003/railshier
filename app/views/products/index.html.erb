@@ -19,7 +19,7 @@
     <td class="name"><%= link_to h(product), edit_product_path(product) %></td>
     <td><%= link_to h(product.family), :controller => :product_families, :action => :show, :id => product.family.id %></td>
     <td><%= product.name %></td>
-    <td><%= product.end_support_date %></td>
+    <td><%= strf_date product.end_support_date %></td>
     <td class="buttons"><%= delete_link product %></td>
   </tr>
 <% end %>

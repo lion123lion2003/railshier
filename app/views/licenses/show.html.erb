@@ -11,8 +11,8 @@
   <tr><th><%= t(:field_project_name) %></th><td><%= @license.project_name %></td></tr>
   <tr><th><%= t(:field_requestor) %></th><td><%= h @license.requestor %></td></tr>
   <tr><th><%= t(:field_hostid) %></th><td><%= @license.hostid %></td></tr>
-  <tr><th><%= t(:field_effective_date) %></th><td><%= @license.effective_date %></td></tr>
-  <tr><th><%= t(:field_expire_date) %></th><td><%= @license.expire_date %></td></tr>
+  <tr><th><%= t(:field_effective_date) %></th><td><%= strf_date @license.effective_date %></td></tr>
+  <tr><th><%= t(:field_expire_date) %></th><td><%= strf_date @license.expire_date %></td></tr>
   <tr><th><%= t(:label_product_plural) %></th><td><ul>
   <% @license.products.each do |product| %>
     <li><%=link_to h(product), product_path(product) %></li>

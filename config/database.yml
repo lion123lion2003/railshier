@@ -7,7 +7,7 @@ development:
   adapter: mysql2
   socket: /var/run/mysqld/mysqld.sock
   database: railshier_dev
-  host: localhost
+  host: 127.0.0.1
   username: railshier
   password: "hierrails"
   encoding: utf8
@@ -20,7 +20,7 @@ test:
   adapter: mysql2
   socket: /var/run/mysqld/mysqld.sock
   database: railshier_test
-  host: localhost
+  host: 127.0.0.1
   username: railshier
   password: "hierrails"
   encoding: utf8
@@ -30,7 +30,7 @@ production:
   adapter: mysql2
   socket: /var/run/mysqld/mysqld.sock
   database: railshier
-  host: localhost
+  host: 127.0.0.1
   username: railshier
   password: "hierrails"
   encoding: utf8

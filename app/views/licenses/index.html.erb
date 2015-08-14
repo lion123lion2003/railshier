@@ -26,8 +26,8 @@
     <td><%= license.project_name %></td>
     <td><%= license.requestor %></td>
     <td><%= license.hostid %></td>
-    <td><%= license.effective_date %></td>
-    <td><%= license.expire_date %></td>
+    <td><%= strf_date license.effective_date %></td>
+    <td><%= strf_date license.expire_date %></td>
     <td><%= license.products.size %></td>
     <td><%= license.usage %></td>
     <td class="buttons"><%= delete_link license %></td>

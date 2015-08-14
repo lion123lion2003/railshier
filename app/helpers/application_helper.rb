@@ -65,4 +65,13 @@ module ApplicationHelper
     s.html_safe
   end
 
+  # format datetime to date format
+  def strf_date(date_time)
+    begin
+      date_time.strftime('%Y-%m-%d')
+    rescue
+      date_time
+    end
+  end
+
 end
