@@ -44,11 +44,18 @@ class GroupsController < ApplicationController
 
   def update
     authorize @group
-    unless params[:group][:primary_user_id].empty? or
-        params[:group][:user_ids].include?(params[:group][:primary_user_id])
-      params[:group][:user_ids] << params[:group][:primary_user_id]
+    unless params[:group][:primary_user_id].empty?
+      params[:group][:user_ids] ||= []
+      unless params[:group][:user_ids].include?(params[:group][:primary_user_id])
+        params[:group][:user_ids] << params[:group][:primary_user_id]
+      end
     end
     @group.attributes = params[:group]
+    if params[:group][:user_ids].nil?
+      @group.user_ids = []
+    end
+
+
     respond_with(@group) do |format|
       if @group.save
         format.html {

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :require_login
-  before_filter :del_empty_params, :only => [:create, :update]
   before_filter :find_user, :except => [:index, :new, :create, :autocomplete_for_new_user]
 
   def index
@@ -26,9 +25,11 @@ class UsersController < ApplicationController
     @groups = policy_scope(Group)
     @new_groups = @groups - @user.groups
 
-    unless params[:user][:primary_group_id].nil? or
-        params[:user][:group_ids].include?(params[:user][:primary_group_id])
-      params[:user][:group_ids] << params[:user][:primary_group_id]
+    unless params[:user][:primary_group_id].empty?
+      params[:user][:group_ids] ||= []
+      unless params[:user][:group_ids].include?(params[:user][:primary_group_id])
+        params[:user][:group_ids] << params[:user][:primary_group_id]
+      end
     end
     @user.attributes = params[:user]
 
@@ -54,11 +55,16 @@ class UsersController < ApplicationController
   def update
     authorize @user
 
-    unless params[:user][:primary_group_id].empty? or
-        params[:user][:group_ids].include?(params[:user][:primary_group_id])
-      params[:user][:group_ids] << params[:user][:primary_group_id]
+    unless params[:user][:primary_group_id].empty?
+      params[:user][:group_ids] ||= []
+      unless params[:user][:group_ids].include?(params[:user][:primary_group_id])
+        params[:user][:group_ids] << params[:user][:primary_group_id]
+      end
     end
     @user.attributes = params[:user]
+    if params[:user][:group_ids].nil?
+      @user.group_ids = []
+    end
 
     respond_with(@user) do |format|
       if @user.save
@@ -100,10 +106,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_404
-  end
-
-  def del_empty_params
-    params[:user].delete(:primary_group_id) if params[:user][:primary_group_id].empty?
   end
 
 end

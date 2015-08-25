@@ -1,5 +1,5 @@
 class Group < Principal
-  attr_accessible :name, :user_ids, :primary_id
+  attr_accessible :name, :user_ids, :primary_id, :primary_user_id
   has_and_belongs_to_many :users,
                           :join_table   => "#{table_name_prefix}groups_users#{table_name_suffix}"
 
