@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/autocomplete
+//= require jquery-ui/tooltip
 //= require_tree .
 
 function observeAutocompleteField(fieldId, url, options) {
@@ -28,3 +29,6 @@ function observeAutocompleteField(fieldId, url, options) {
   });
 }
 
+$(function() {
+  $(document).tooltip();
+});
