@@ -24,4 +24,8 @@ class License < ActiveRecord::Base
     product_licenses.select{|pl| pl.product_id == id}.first
   end
 
+  def expired?
+    expire_date < Date.today
+  end
+
 end

@@ -14,4 +14,9 @@ class ProductLicense < ActiveRecord::Base
   def author_id
     license.author_id
   end
+
+  def expired?
+    expire_date < Date.today
+  end
+
 end

@@ -16,8 +16,9 @@
   <tr><th><%= t(:label_product_plural) %></th><td><ul>
   <% @license.product_licenses.each do |pl| %>
     <% product = pl.product %>
-    <li><%=link_to h(product), product_path(product), :title => "#{product.name}" %>
-    (<%= strf_date pl.expire_date %>)</li>
+    <li class="<%= pl.expired? ? "expired" : "" %>">
+    <%=link_to h(product), product_path(product), :title => "#{product.name} (#{strf_date pl.expire_date})" %>
+    </li>
   <% end %>
 </ul></td></tr>
   <tr><th><%= t(:field_usage) %></th><td><%= @license.usage %></td></tr>
